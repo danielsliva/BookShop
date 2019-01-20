@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="row">
-        <div class="col-md-4 col-md-offset-4 py-4">
+        <div class="col-md-6 offset-md-3">
             <h1>Zarejestruj się </h1>
             @if(count($errors)>0)
             <div class="alert alert-danger">
@@ -23,5 +22,4 @@
                 <button type="submit">Zarejestruj się</button>
             </form>
         </div>
-    </div>
     @endsection

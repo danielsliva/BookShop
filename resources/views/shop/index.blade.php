@@ -14,7 +14,7 @@ Bookarium
                             <p class="card-text">{{ $product->description}}</p>
                             <div class="clearfix">
                             <div class="pull-left price" style="float: left !important">{{ $product->price}} zł </div>
-                            <a href="" class="btn btn-success" style="float: right !important">Kup</a>
+                            <a href="{{route('product.addToCard', ['id' => $product->id])}}" class="btn btn-success" style="float: right !important">Kup</a>
                         </div>
                     </div>
                 </div>
