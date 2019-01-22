@@ -21,5 +21,7 @@
                 {{csrf_field()}}
                 <button type="submit">Zaloguj się</button>
             </form>
+        <br/>
+        <p> Nie masz jeszcze konta? <a href="{{ route('users.signup') }}"> Zarejestruj się! </a> </p>
         </div>
     @endsection

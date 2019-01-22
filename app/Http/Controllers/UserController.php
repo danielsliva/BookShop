@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 
 class UserController extends Controller
 {
@@ -25,6 +26,11 @@ class UserController extends Controller
     $user->save();
 
     Auth::login($user);
+    if(Session::has('oldUrl')){
+        $oldUrl = Session::get('oldUrl');
+        Session::forget('oldUrl');
+        return redirect()->to(Session::get($oldUrl));
+    }
 
     return redirect()->route('shop.index');
     }
@@ -39,17 +45,27 @@ class UserController extends Controller
             'password' => 'required|min:4'
         ]);
         if(Auth::attempt(['email'=>$request->input('email'),'password'=>$request->input('password')])){
+            if(Session::has('oldUrl')){
+                $oldUrl = Session::get('oldUrl');
+                Session::forget('oldUrl');
+                return redirect()->to(Session::get($oldUrl));
+            }
             return redirect()->route('users.profile');
         }
         return redirect()->back();
     }
 
     public function getProfile(){
-        return view('users.profile');
+        $orders = Auth::user()->orders;
+        $orders->transform(function($order,$key){
+            $order->cart =unserialize($order->cart);
+            return $order;
+        });
+        return view('users.profile', ['orders'=>$orders]);
     }
 
     public function getLogout(){
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route('users.signin');
     }
 }

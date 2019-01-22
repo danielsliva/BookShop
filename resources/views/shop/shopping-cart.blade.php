@@ -18,8 +18,8 @@ Bookarium
                             <span class="caret">Akcja</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="">Reduce by 1</a></li>
-                            <li><a href="">Reduce all</a></li>
+                        <li><a href="{{ route('product.reduceByOne' , ['id' => $product['item']['id']] ) }}">Usuń jedną pozycje</a></li>
+                            <li><a href="{{ route('product.remove', ['id' => $product['item']['id']]) }}">Usuń wszystkie pozycje</a></li>
                         </ul>
                     </div>
                     </li>
@@ -29,7 +29,7 @@ Bookarium
     </div>
     <div class="row">
             <div class="col-md-6 offset-md-3">
-                <strong>Total: {{$totalPrice}}</strong>
+                <strong>Wartość zamówienia: {{$totalPrice}}</strong>
             </div>
         </div>
         <div class="row">
@@ -40,7 +40,7 @@ Bookarium
     @else
     <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h2>No Items in Cart!</h2>
+                <h2>Koszyk jest pusty!</h2>
             </div>
         </div>
     @endif

@@ -2,9 +2,6 @@
         <a class="navbar-brand" href="/">Bookarium</a>
         <div class="collapse navbar-collapse" id="navbarsExample05">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
           </ul>
           <div class="form-inline my-2 my-md-0">
                 <div class="collapse navbar-collapse" id="navbarsExample05">
